@@ -1,116 +1,82 @@
 import React from "react";
 import Layouts from "./Layouts";
-import {
-  Card,
-  CardBody,
-  Typography,
-  CardHeader,
-} from "@material-tailwind/react";
-
-function TestimonialCard({ img, client, title, clientInfo }) {
-  return (
-    <Card shadow={false} className="bg-gray-100/50 rounded-2xl p-6">
-      <CardHeader color="transparent" floated={false} shadow={false}>
-        <Typography
-          color="blue-gray"
-          className="lg:mb-20 mb-4 text-2xl font-bold"
-        >
-          &quot;{title}&quot;
-        </Typography>
-      </CardHeader>
-      <CardBody className="px-4 py-0 flex flex-wrap-reverse gap-x-6 justify-between items-center">
-        <div>
-          <Typography variant="h6" color="blue-gray">
-            {client}
-          </Typography>
-          <Typography
-            variant="paragraph"
-            className="font-normal !text-gray-500"
-          >
-            {clientInfo}
-          </Typography>
-        </div>
-        <img src={img} className="max-w-[8rem]" alt={client} />
-      </CardBody>
-    </Card>
-  );
-}
-
-const testimonials = [
-  {
-    title:
-      "The team went above and beyond to ensure my issue was resolved quickly and efficiently. Truly outstanding!",
-    client: "Jessica Devis",
-    clientInfo: "Full Stack Developer @Netflix",
-    img: "/image/netflix.svg",
-  },
-  {
-    title:
-      "It have broadened my horizons and helped me advance my career. The community is incredibly supportive.",
-    client: "Marcell Glock",
-    clientInfo: "Graphic Designer, @Coinbase",
-    img: "https://www.material-tailwind.com/image/Logo-coinbase.svg",
-  },
-];
-
+import Hero from "../assets/hero.jpg";
+import { UserIcon, ClockIcon } from "@heroicons/react/24/solid";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
 const Dashboard = () => {
   return (
     <Layouts>
-      <section className="px-8 py-10 lg:py-28">
-        <div className="container mx-auto">
-          <Typography
-            variant="h2"
-            color="blue-gray"
-            className="mb-4 !text-2xl lg:!text-4xl"
+      <div className="flex h-screen">
+        <div className="bg-gray-100 h-screen pt-12 ">
+          <p className="pl-5  text-3xl">Selamat Datang, user</p>
+          <p className="pl-5 mb-3 text-gray-500">semoga harimu menyenangkan</p>
+          <div
+            className="bg-local w-[1015px] h-[460px] bg-gradient-to-t from-black to-black bg-cover bg-center flex items-center justify-center back"
+            style={{
+              backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${Hero})`,
+            }}
           >
-            The heartfelt testimonials of our community
-          </Typography>
-          <Typography
-            variant="lead"
-            className="max-w-3xl !text-gray-500 mb-10 lg:mb-20"
-          >
-            From life-enhancing gadgets to unparalleled customer support, and
-            transformative learning opportunities.
-          </Typography>
-          <div className="grid gap-8 grid-cols-1 lg:grid-cols-2">
-            {testimonials.map((props, key) => (
-              <TestimonialCard key={key} {...props} />
-            ))}
+            <div>
+              <h1 className="text-center text-3xl text-white font-bold">
+                SISTEM MANAJEMEN FAKULTAS <br />
+                TEKNOLOGI INFORMASI
+              </h1>
+              <p className="text-center text-white">
+                Media Sistem Manajemen Fakultas Teknologi Informasi
+              </p>
+            </div>
           </div>
 
-          <Card
-            shadow={false}
-            className="mt-8 bg-gray-100/50 text-center rounded-2xl p-6"
-          >
-            <CardHeader color="transparent" floated={false} shadow={false}>
-              <Typography
-                color="blue-gray"
-                className="mb-4 !text-2xl lg:!text-3xl max-w-4xl !leading-snug mx-auto font-bold"
-              >
-                &quot;Its intuitive design and powerful features make it
-                indispensable. I can&apos;t imagine going back to life before
-                it!&quot;
-              </Typography>
-            </CardHeader>
-            <CardBody className="items-center mx-auto py-2">
-              <img
-                src="/image/spotify.svg"
-                className="max-w-[8rem] mx-auto grayscale"
-                alt="spotify"
-              />
-              <Typography variant="h6" color="blue-gray">
-                Emma Roberts
-              </Typography>
-              <Typography
-                variant="paragraph"
-                className="font-normal !text-gray-500"
-              >
-                Chief Executive @Spotify
-              </Typography>
-            </CardBody>
-          </Card>
+          <div className="w-5/6 mx-auto mt-5">
+            <div className="flex justify-between">
+              <p className="text-gray-700 font-bold ">Interaksi</p>
+              <p className="text-blue-700 font-bold ">Lihat Semua</p>
+            </div>
+            <div className="flex gap-3 mt-5">
+              <div className="rounded-lg bg-white p-3">
+                <h1 className="font-bold">Status Peminjaman ruangan</h1>
+                <p className="text-sm text-gray-700 mt-3">FTI469</p>
+                <span className="flex align-middle self-center mt-12 gap-2">
+                  <UserIcon className="h-5 w-5 text text-gray-600" />
+                  <p className="text-gray-600">sarpras</p>
+                </span>
+                <span className="flex align-middle self-center mt-6 gap-2">
+                  <ClockIcon className="h-5 w-5 text text-gray-600" />
+                  <p className="text-gray-600">11.00 - 13.00</p>
+                </span>
+              </div>
+              <div className="rounded-lg bg-white p-3">
+                <h1 className="font-bold">Status Peminjaman ruangan</h1>
+                <p className="text-sm text-gray-700 mt-3">FTI469</p>
+                <span className="flex align-middle self-center mt-12 gap-2">
+                  <UserIcon className="h-5 w-5 text text-gray-600" />
+                  <p className="text-gray-600">sarpras</p>
+                </span>
+                <span className="flex align-middle self-center mt-6 gap-2">
+                  <ClockIcon className="h-5 w-5 text text-gray-600" />
+                  <p className="text-gray-600">11.00 - 13.00</p>
+                </span>
+              </div>
+              <div className="rounded-lg bg-white p-3">
+                <h1 className="font-bold">Status Peminjaman ruangan</h1>
+                <p className="text-sm text-gray-700 mt-3">FTI469</p>
+                <span className="flex align-middle self-center mt-12 gap-2">
+                  <UserIcon className="h-5 w-5 text text-gray-600" />
+                  <p className="text-gray-600">sarpras</p>
+                </span>
+                <span className="flex align-middle self-center mt-6 gap-2">
+                  <ClockIcon className="h-5 w-5 text text-gray-600" />
+                  <p className="text-gray-600">11.00 - 13.00</p>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
+        <div className="w-3/4">
+          <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" />
+        </div>
+      </div>
     </Layouts>
   );
 };
