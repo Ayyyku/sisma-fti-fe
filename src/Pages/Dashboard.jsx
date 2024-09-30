@@ -1,7 +1,7 @@
 import React from "react";
 import Layouts from "./Layouts";
 import Hero from "../assets/hero.jpg";
-import { UserIcon, ClockIcon } from "@heroicons/react/24/solid";
+import { UserIcon, ClockIcon, BellIcon } from "@heroicons/react/24/solid";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 const Dashboard = () => {
@@ -73,8 +73,14 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="w-3/4">
+        <div className="ml-12 w-2/3">
+        <div className="flex gap-4 justify-end items-center mt-5">
+            <BellIcon className="h-8 w-8 text-gray-600" />
+          <img src="https://i.pinimg.com/564x/8d/bb/3e/8dbb3ea9dcf5bb51ccc295b05081a442.jpg" alt="img profile" className="w-16 rounded-full" />
+        </div>
+        <div className="mt-5">
           <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" />
+        </div>
         </div>
       </div>
     </Layouts>
