@@ -1,9 +1,11 @@
 import React from "react";
 import Layouts from "./Layouts";
 import Hero from "../assets/hero.jpg";
-import { UserIcon, ClockIcon, BellIcon } from "@heroicons/react/24/solid";
+import { BellIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import CardPeminjamanRuangan from "../components/CardPeminjamanRuangan";
+import JadwalDashboard from "../components/JadwalDashboard";
 const Dashboard = () => {
   return (
     <Layouts>
@@ -34,53 +36,36 @@ const Dashboard = () => {
               <p className="text-blue-700 font-bold ">Lihat Semua</p>
             </div>
             <div className="flex gap-3 mt-5">
-              <div className="rounded-lg bg-white p-3">
-                <h1 className="font-bold">Status Peminjaman ruangan</h1>
-                <p className="text-sm text-gray-700 mt-3">FTI469</p>
-                <span className="flex align-middle self-center mt-12 gap-2">
-                  <UserIcon className="h-5 w-5 text text-gray-600" />
-                  <p className="text-gray-600">sarpras</p>
-                </span>
-                <span className="flex align-middle self-center mt-6 gap-2">
-                  <ClockIcon className="h-5 w-5 text text-gray-600" />
-                  <p className="text-gray-600">11.00 - 13.00</p>
-                </span>
-              </div>
-              <div className="rounded-lg bg-white p-3">
-                <h1 className="font-bold">Status Peminjaman ruangan</h1>
-                <p className="text-sm text-gray-700 mt-3">FTI469</p>
-                <span className="flex align-middle self-center mt-12 gap-2">
-                  <UserIcon className="h-5 w-5 text text-gray-600" />
-                  <p className="text-gray-600">sarpras</p>
-                </span>
-                <span className="flex align-middle self-center mt-6 gap-2">
-                  <ClockIcon className="h-5 w-5 text text-gray-600" />
-                  <p className="text-gray-600">11.00 - 13.00</p>
-                </span>
-              </div>
-              <div className="rounded-lg bg-white p-3">
-                <h1 className="font-bold">Status Peminjaman ruangan</h1>
-                <p className="text-sm text-gray-700 mt-3">FTI469</p>
-                <span className="flex align-middle self-center mt-12 gap-2">
-                  <UserIcon className="h-5 w-5 text text-gray-600" />
-                  <p className="text-gray-600">sarpras</p>
-                </span>
-                <span className="flex align-middle self-center mt-6 gap-2">
-                  <ClockIcon className="h-5 w-5 text text-gray-600" />
-                  <p className="text-gray-600">11.00 - 13.00</p>
-                </span>
-              </div>
+              {[...Array(3)].map((_, i) => (
+                <CardPeminjamanRuangan key={i} />
+              ))}
             </div>
           </div>
         </div>
         <div className="ml-12 w-2/3">
-        <div className="flex gap-4 justify-end items-center mt-5">
+          <div className="flex gap-4 justify-end items-center mt-5">
             <BellIcon className="h-8 w-8 text-gray-600" />
-          <img src="https://i.pinimg.com/564x/8d/bb/3e/8dbb3ea9dcf5bb51ccc295b05081a442.jpg" alt="img profile" className="w-16 rounded-full" />
-        </div>
-        <div className="mt-5">
-          <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" />
-        </div>
+            <img
+              src="https://i.pinimg.com/564x/8d/bb/3e/8dbb3ea9dcf5bb51ccc295b05081a442.jpg"
+              alt="img profile"
+              className="w-16 rounded-full"
+            />
+          </div>
+          <div className="mt-5">
+            <FullCalendar
+              plugins={[dayGridPlugin]}
+              initialView="dayGridMonth"
+              className="bg-gray-700 shadow-lg rounded-lg p-4"
+            />
+            <div>
+
+              <h1 className="font-bold mt-10 text-2xl mb-4">Jadwal</h1>
+              <JadwalDashboard />
+              {[...Array(3)].map((_, i) => (
+                <JadwalDashboard key={i} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </Layouts>
