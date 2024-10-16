@@ -6,6 +6,7 @@ const Jadwal = () => {
   const jadwalData = [
     { ruangan: 'Ruang 101', hari: 'Senin', jam: '08:00 - 10:00', keterangan: 'Kuliah Matematika' },
     { ruangan: 'Ruang 102', hari: 'Selasa', jam: '10:00 - 12:00', keterangan: 'Kuliah Pemrograman Web' },
+    { ruangan: 'Ruang 103', hari: 'Rabu', jam: '13:00 - 15:00', keterangan: 'Kuliah Algoritma' },
     { ruangan: 'Ruang 103', hari: 'Rabu', jam: '13:00 - 15:00', keterangan: 'Kuliah Algoritma' }
   ];
 
