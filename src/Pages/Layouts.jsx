@@ -6,7 +6,7 @@ const Layouts = ({ children }) => {
     <React.Fragment>
       <div className="flex h-screen">
         <Dashboard />
-        <main>{children}</main>
+        <main className="w-screen">{children}</main>
       </div>
     </React.Fragment>
   );
