@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        "http://localhost:5000/api/auth/login", // Ganti URL API
         {
           username,
           password,
@@ -24,6 +24,7 @@ const Login = () => {
         navigate("/dashboard");
       }
     } catch (err) {
+      console.log(err);
       setError("Email atau Password salah"); // Set error message if login fails
     }
   };

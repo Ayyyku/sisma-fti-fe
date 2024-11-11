@@ -24,7 +24,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       // Optionally make a logout API call to the server if needed
-      await axios.post("http://localhost:3000/api/auth/logout");
+      await axios.post("http://localhost:5000/api/auth/logout");
 
       // Clear local storage (or cookies) where JWT might be stored
       localStorage.removeItem("token");

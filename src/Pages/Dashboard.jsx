@@ -6,12 +6,41 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import CardPeminjamanRuangan from "../components/CardPeminjamanRuangan";
 import JadwalDashboard from "../components/JadwalDashboard";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 const Dashboard = () => {
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/auth/me");
+        setUserData(response.data);
+        console.log(response.data);
+      } catch (err) {
+        console.error("Error fetching user data:", err);
+        setError("Gagal mengambil data pengguna");
+      }
+    };
+
+    fetchUserData();
+  }, []);
   return (
     <Layouts>
       <div className="flex h-screen">
         <div className="bg-gray-100 h-screen pt-12 ">
-          <p className="pl-5  text-3xl">Selamat Datang, user</p>
+          <p className="pl-5  text-3xl">
+            {error && <p className="text-red-500">{error}</p>}
+            {userData ? (
+              <div>
+                <h1>Username: {userData.username}</h1>
+              </div>
+            ) : (
+              <p>Loading...</p>
+            )}
+          </p>
           <p className="pl-5 mb-3 text-gray-500">semoga harimu menyenangkan</p>
           <div
             className="bg-local w-[1015px] h-[460px] bg-gradient-to-t from-black to-black bg-cover bg-center flex items-center justify-center back"
