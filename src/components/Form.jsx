@@ -1,16 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Form = () => {
+    const [formData, setFormData] = useState({
+        nama_panjang: '',
+        program_studi: '',
+        nim: '',
+        nama_bank: '',
+        nomor_rekening: '',
+        nomor_hp: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:5000/api/auth/form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
     return (
-        <form className="mt-10 p-9">
+        <form className="mt-10 p-9" onSubmit={handleSubmit}>
             <div className="relative z-0 w-full mb-5 group">
                 <input
                     type="text"
-                    name="floating_email"
+                    name="nama_panjang"
                     id="floating_email"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     required=""
+                    value={formData.nama_panjang}
+                    onChange={handleChange}
                 />
                 <label
                     htmlFor="floating_email"
@@ -22,11 +55,13 @@ const Form = () => {
             <div className="relative z-0 w-full mb-5 group">
                 <input
                     type="text"
-                    name="floating_password"
+                    name="program_studi"
                     id="floating_password"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     required=""
+                    value={formData.program_studi}
+                    onChange={handleChange}
                 />
                 <label
                     htmlFor="floating_password"
@@ -37,12 +72,14 @@ const Form = () => {
             </div>
             <div className="relative z-0 w-full mb-5 group">
                 <input
-                    type="number"
-                    name="repeat_password"
+                    type="text"
+                    name="nim"
                     id="floating_repeat_password"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     required=""
+                    value={formData.nim}
+                    onChange={handleChange}
                 />
                 <label
                     htmlFor="floating_repeat_password"
@@ -55,11 +92,13 @@ const Form = () => {
                 <div className="relative z-0 w-full mb-5 group">
                     <input
                         type="text"
-                        name="floating_first_name"
+                        name="nama_bank"
                         id="floating_first_name"
                         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
                         required=""
+                        value={formData.nama_bank}
+                        onChange={handleChange}
                     />
                     <label
                         htmlFor="floating_first_name"
@@ -71,11 +110,13 @@ const Form = () => {
                 <div className="relative z-0 w-full mb-5 group">
                     <input
                         type="text"
-                        name="floating_last_name"
+                        name="nomor_rekening"
                         id="floating_last_name"
                         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
                         required=""
+                        value={formData.nomor_rekening}
+                        onChange={handleChange}
                     />
                     <label
                         htmlFor="floating_last_name"
@@ -90,11 +131,13 @@ const Form = () => {
                     <input
                         type="tel"
                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                        name="floating_phone"
+                        name="nomor_hp"
                         id="floating_phone"
                         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
                         required=""
+                        value={formData.nomor_hp}
+                        onChange={handleChange}
                     />
                     <label
                         htmlFor="floating_phone"
@@ -103,7 +146,6 @@ const Form = () => {
                         Nomor HP
                     </label>
                 </div>
-                
             </div>
             <button
                 type="submit"
@@ -112,7 +154,6 @@ const Form = () => {
                 Submit
             </button>
         </form>
-
     )
 }
 
