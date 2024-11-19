@@ -94,6 +94,14 @@ const Dashboard = () => {
             Pengaturan
           </ListItem>
         </NavLink>
+        <NavLink to={"/admin"}>
+          <ListItem className="hover:bg-blue-800 hover:text-white">
+            <ListItemPrefix>
+              <Cog6ToothIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Admin
+          </ListItem>
+        </NavLink>
         <ListItem
           className="hover:bg-blue-800 hover:text-white"
           onClick={handleLogout}

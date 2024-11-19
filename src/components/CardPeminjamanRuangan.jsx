@@ -1,24 +1,36 @@
 import React from "react";
 import { UserIcon, ClockIcon, ChatBubbleBottomCenterIcon } from "@heroicons/react/24/solid";
 
+const CardPeminjamanRuangan = ({ ruangan }) => {
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'waiting':
+        return 'bg-orange-500';
+      case 'approve':
+        return 'bg-green-500';
+      case 'decline':
+        return 'bg-red-500';
+      default:
+        return 'bg-gray-500';
+    }
+  };
 
-const CardPeminjamanRuangan = () => {
   return (
-    <div className="rounded-lg bg-white p-3">
-      <h1 className="font-bold">Status Peminjaman ruangan</h1>
-      <p className="text-sm text-gray-700 mt-3">FTI469</p>
-      <span className="flex align-middle self-center mt-12 gap-2">
-        <UserIcon className="h-5 w-5 text text-gray-600" />
-        <p className="text-gray-600">sarpras</p>
+    <div className="p-3 bg-white rounded-lg">
+      <h1 className="font-bold">Informasi</h1>
+      <p className="mt-3 text-sm text-gray-700">{ruangan.namaRuangan}</p>
+      <span className="flex self-center gap-2 mt-12 align-middle">
+        <UserIcon className="w-5 h-5 text-gray-600 text" />
+        <p className="text-gray-600">{ruangan.name}</p>
       </span>
-      <span className="flex align-middle self-center mt-6 gap-2">
-        <ClockIcon className="h-5 w-5 text text-gray-600" />
-        <p className="text-gray-600">11.00 - 13.00</p>
+      <span className="flex self-center gap-2 mt-6 align-middle">
+        <ClockIcon className="w-5 h-5 text-gray-600 text" />
+        <p className="text-gray-600">{new Date(ruangan.time).toLocaleString()}</p>
       </span>
 
-      <div className="bg-light-blue-800 w-3/6 rounded-md mt-3 flex justify-between align-middle gap-3 px-2 pt-1 ">
-        <p className="text-center text-white">Menuggu</p>
-        <ChatBubbleBottomCenterIcon className="h-5 w-5 text-white my-auto" />
+      <div className={`flex justify-between w-3/6 gap-3 px-2 pt-1 mt-3 align-middle rounded-md ${getStatusColor(ruangan.status)}`}>
+        <p className="text-center text-white">{ruangan.status}</p>
+        <ChatBubbleBottomCenterIcon className="w-5 h-5 my-auto text-white" />
       </div>
     </div>
   );

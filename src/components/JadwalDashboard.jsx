@@ -9,8 +9,8 @@ const JadwalDashboard = () => {
           <div className="w-4 h-4 rounded-full bg-blue-900"></div>
         </div>
         <div className="flex flex-col">
-          <h1>English Class</h1> <br />
-          <p className="text-gray-600">Yeremia</p>
+          <h1>Pemrograman Web</h1> <br />
+          <p className="text-gray-600">Pratyaksa Ocsa Saian</p>
         </div>
       </div>
       <div className="align-middle my-auto">

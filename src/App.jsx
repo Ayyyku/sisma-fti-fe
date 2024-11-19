@@ -7,6 +7,7 @@ import Peminjaman from './Pages/Peminjaman';
 import AsistenDosen from './Pages/AsistenDosen';
 import Forum from './Pages/Forum';
 import Pengaturan from './Pages/Pengaturan';
+import Admin from './Pages/Admin';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/asisten-dosen" element={<AsistenDosen />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/pengaturan" element={<Pengaturan />} />
+          <Route path="/admin" element={<Admin />} />
 
 
         </Routes>
